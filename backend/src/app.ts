@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import { env } from "./config/env.js";
 
 const app = express();
 
@@ -14,9 +15,9 @@ app.use(
 app.use(
   cors({
     origin:
-      process.env.NODE_ENV === "production"
-        ? process.env.CORS_ORIGIN_PROD
-        : process.env.CORS_ORIGIN_DEV,
+      env.NODE_ENV === "production"
+        ? env.CORS_ORIGIN_PROD
+        : env.CORS_ORIGIN_DEV,
     credentials: true,
   })
 );
